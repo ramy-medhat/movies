@@ -1,13 +1,20 @@
 import React from 'react';
-// import logo from './logo.svg';
+import {
+  BrowserRouter as Router
+} from "react-router-dom";
 import './App.css';
-import Popular from './components/popular'
+import Header from './basic/header'
+import Main from './basic/main'
+
 
 function App() {
   return (
-    <div className="App">
-     <Popular/>
-    </div>
+    <Router>
+      <div className="App">
+       <Header/>
+       <Main/>
+      </div>
+    </Router>
   );
 }
 
