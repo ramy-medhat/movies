@@ -1,18 +1,19 @@
-import React,{useState} from 'react'
-import {Form, FormControl} from 'react-bootstrap';
+import React from 'react'
+import {InputGroup, FormControl} from 'react-bootstrap';
 
 
-const Search = () =>{
-  const [SearchValue,setSearchValue]= useState('');
+const Search = ({searchValue,setSearchValue}) =>{
   const handleSearch = e =>{
     setSearchValue(e.target.value)
   }
     return(
-        <>
-         <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" onKeyUp={handleSearch} value={SearchValue} />
-          </Form>
-        </>
+        <InputGroup>
+          <FormControl
+            placeholder="search..."
+            aria-label="search"
+            onChange={handleSearch} value={searchValue}
+          />
+          </InputGroup>
     )
 }
 

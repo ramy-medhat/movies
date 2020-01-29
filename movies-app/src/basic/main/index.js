@@ -21,7 +21,7 @@ const Main = () =>{
           <Route path="/upcoming">
             <Upcoming/>
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <Popular/>
           </Route>
         </Switch>
