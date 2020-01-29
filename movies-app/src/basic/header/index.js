@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import {Navbar,Nav,Form,FormControl,Button} from 'react-bootstrap'
@@ -7,6 +7,7 @@ import {Navbar,Nav,Form,FormControl,Button} from 'react-bootstrap'
     color: #17a2b8;
     text-transform: capitalize;
     margin: 0 10px;
+    
     &:hover{
         color:#fff;
         text-decoration:none;
@@ -14,6 +15,20 @@ import {Navbar,Nav,Form,FormControl,Button} from 'react-bootstrap'
 `
 
 const Header = () =>{
+
+const [searchValue,setSearchValue] = useState('')
+
+const handleSubmit = e =>{
+    e.preventDefault();
+}
+
+const handleSearch = e =>{
+    e.preventDefault()
+   
+    setSearchValue(e.target.value);
+    console.log(searchValue)
+} 
+
 
 return(
     <>
@@ -25,8 +40,8 @@ return(
                      <MainNavLink to="/upcoming">Upcoming</MainNavLink>
                      <MainNavLink to="/now-playing">Now Playing</MainNavLink>
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Form inline onSubmit={handleSubmit}>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onKeyUp={handleSearch} />
                     <Button variant="outline-info">Search</Button>
                 </Form>
         </Navbar>

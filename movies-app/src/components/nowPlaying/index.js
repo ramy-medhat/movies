@@ -1,21 +1,23 @@
-import React,{useState,useEffect} from'react';
+import React,{useState,useEffect} from 'react';
 import MovieCard from '../../common/card';
 import Loading from '../../common/spinner'
 import { Container, Row, Col } from 'react-bootstrap';
 
 const NowPlaying = () =>{
-    const [nowPlayingMovie, setnowPlayingMovie] = useState();
+    const [nowPlayingMovie, setNowPlayingMovie] = useState();
     
     async function fetchData() {
         const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?&Lnguage=en-US&api_key=e944d64e45bd1927514acc391b971f4d");
         res
-          .json()
-          .then(res => setnowPlayingMovie(res))
+        .json()
+          .then(res => setNowPlayingMovie(res))
       }
  
       useEffect(() => {
         fetchData();
       },[]); //like componentDidMount fetchData will call once when we mount the component
+
+      console.log('now',nowPlayingMovie)
 
       if(!nowPlayingMovie){
         return<Loading/>
@@ -31,7 +33,7 @@ const NowPlaying = () =>{
               {nowPlayingMovie.results.map((movie,index)=>{
                 return(
                   <Col xs={12} sm={6} md={3} lg={4} key={index}>
-                     <MovieCard title={movie.title} description={movie.overview} rate={movie.vote_average} poster={movie.poster_path}/>
+                     <MovieCard title={movie.title} description={movie.overview} rate={movie.vote_average} poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}/>
                    </Col>
                 )
               })}

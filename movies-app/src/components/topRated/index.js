@@ -31,7 +31,7 @@ const TopRated = () =>{
               {topRated.results.map((movie,index)=>{
                 return(
                   <Col xs={12} sm={6} md={3} lg={4} key={index}>
-                     <MovieCard title={movie.title} description={movie.overview} rate={movie.vote_average} poster={movie.poster_path}/>
+                     <MovieCard title={movie.title} description={movie.overview} rate={movie.vote_average} poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}/>
                    </Col>
                 )
               })}

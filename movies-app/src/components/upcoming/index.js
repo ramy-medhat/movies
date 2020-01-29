@@ -1,16 +1,16 @@
-import React,{useState,useEffect} from'react';
+import React,{useState,useEffect} from 'react';
 import MovieCard from '../../common/card';
 import Loading from '../../common/spinner'
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Upcoming = () =>{
-    const [upcomingMovies, setupcomingMovies] = useState();
+    const [upcomingMovies, setUpcomingMovies] = useState();
     
     async function fetchData() {
         const res = await fetch("https://api.themoviedb.org/3/movie/upcoming?page=1&language=en-US&api_key=e944d64e45bd1927514acc391b971f4d");
         res
           .json()
-          .then(res => setupcomingMovies(res))
+          .then(res => setUpcomingMovies(res))
       }
     
       useEffect(() => {
@@ -31,7 +31,7 @@ const Upcoming = () =>{
               {upcomingMovies.results.map((movie,index)=>{
                 return(
                   <Col xs={12} sm={6} md={3} lg={4} key={index}>
-                     <MovieCard title={movie.title} description={movie.overview} rate={movie.vote_average} poster={movie.poster_path}/>
+                     <MovieCard title={movie.title} description={movie.overview} rate={movie.vote_average} poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}/>
                    </Col>
                 )
               })}
