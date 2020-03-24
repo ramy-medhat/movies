@@ -8,7 +8,7 @@ const MovieCard = ({title, description, poster, rate})=>{
             <Card.Img variant="top" src={poster}/>
             <Card.Body>
             <Card.Title>{title}</Card.Title>
-            <p>Rate:{rate}</p>
+            <p>Rate: {rate}</p>
             <Card.Text style={{height:'120px', overflow:'hidden'}}>
                 {description}
             </Card.Text>
